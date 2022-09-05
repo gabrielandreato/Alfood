@@ -16,7 +16,7 @@ const AdministracaoRestaurantes = () => {
         http.delete(`restaurantes/${restauranteAhSerExcluido.id}/`)
             .then(() => {
                 const listaRestaurantes = restaurantes.filter(restaurante => restaurante.id !== restauranteAhSerExcluido.id)
-                setRestaurantes([ ...listaRestaurantes])
+                setRestaurantes([...listaRestaurantes])
             })
     }
 
@@ -38,16 +38,17 @@ const AdministracaoRestaurantes = () => {
                 </TableHead>
                 <TableBody>
                     {restaurantes.map(restaurante => <TableRow key={restaurante.id}>
-                            <TableCell>
-                                {restaurante.nome}
-                            </TableCell>
-                            <TableCell>
-                                [ <Link to={`/admin/restaurantes/${restaurante.id}`}>editar</Link> ]
-                            </TableCell>
                         <TableCell>
-                                <Button variant="outlined" color="error" onClick={() => excluir(restaurante)}>Excluir</Button>
-                            </TableCell>
-                        </TableRow>)}
+                            {restaurante.nome}
+                        </TableCell>
+                        <TableCell>
+                            [ <Link to={`/admin/restaurantes/${restaurante.id}`}>editar</Link> ]
+                        </TableCell>
+                        <TableCell>
+                            <Button variant="outlined" color="error"
+                                    onClick={() => excluir(restaurante)}>Excluir</Button>
+                        </TableCell>
+                    </TableRow>)}
                 </TableBody>
             </Table>
         </TableContainer>
